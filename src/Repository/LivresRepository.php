@@ -50,7 +50,7 @@ class LivresRepository extends ServiceEntityRepository
 //            ->orderBy('l.id', 'ASC')
 //            ->setMaxResults(10)
 //            ->getQuery()
-//            ->getResult()
+//            ->getResult(m)
 //        ;
 //    }
 

@@ -23,6 +23,15 @@ class Livres
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $editeur = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $DateEdition = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +69,42 @@ class Livres
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getEditeur(): ?string
+    {
+        return $this->editeur;
+    }
+
+    public function setEditeur(string $editeur): self
+    {
+        $this->editeur = $editeur;
+
+        return $this;
+    }
+
+    public function getDateEdition(): ?\DateTimeInterface
+    {
+        return $this->DateEdition;
+    }
+
+    public function setDateEdition(\DateTimeInterface $DateEdition): self
+    {
+        $this->DateEdition = $DateEdition;
 
         return $this;
     }
