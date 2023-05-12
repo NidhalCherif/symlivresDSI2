@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Categories;
 use App\Entity\Livres;
+use App\Form\CategorieType;
+use App\Form\LivreType;
 use App\Repository\LivresRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -46,6 +49,24 @@ class LivresController extends AbstractController
         $em->persist($livre);
         $em->flush();
         dd($livre);    }
+    #[Route('admin/livres/add1', name: 'admin_livres_add2')]
+    public function add1(ManagerRegistry $doctrine, Request $request): Response
+    {
+        $livre=new Livres();
+        $form=$this->createForm(LivreType::class,$livre);
+        $form->handleRequest($request);
+        if($form->isSubmitted()&&$form->isValid())
+        { $livre=$form->getData();
+            $em=$doctrine->getManager();
+            $em->persist($livre);
+            $em->flush();
+
+           // return new Response("Le livre a été ajouté dans la base");
+            return $this->redirectToRoute('app_livres');
+        }
+
+        return $this->render("Livres/add1.html.twig",['f'=>$form]);
+    }
 
     #[Route('admin/livres/update/{id}', name: 'app_livres_id')]
     public function update(Livres $livre,ManagerRegistry $doctrine): Response
