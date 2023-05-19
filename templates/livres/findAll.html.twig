@@ -20,8 +20,8 @@
             <td>{{livre.prix}}</td>
             <td>{{livre.editeur}}</td>
             <td>{{livre.dateEdition|date('d-m-Y')}}</td>
-            <td>{{ livre.categorie.libelle }}</td>
-            <td><a href="{{ path('admin_livres_id_delete',{'id':livre.id}) }}" class="btn btn-danger btn-sm">Supprimer</a></td>
+            <td>{{livre.categorie.libelle}}</td>
+            <td><a href="{{path('admin_livres_id_delete',{'id':livre.id})}}" class="btn btn-danger btn-sm">Supprimer</a></td>
             <td><a href="" class="btn btn-success btn-sm">voir détail...</a></td>
         </tr>
 

@@ -30,4 +30,13 @@ class CategoriesController extends AbstractController
 
         return $this->render("Categories/add.html.twig",['f'=>$form]);
     }
+
+    #[Route('/livreByCat/{id}', name: 'Livre_By_categorie')]
+    public function livreByCategrie(Categories $categorie): Response
+    {
+       $livres=$categorie->getLivres();
+
+
+        return $this->render("home/findAll.html.twig",['livres'=>$livres]);
+    }
 }
